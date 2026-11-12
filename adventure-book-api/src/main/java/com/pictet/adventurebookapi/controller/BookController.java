@@ -1,24 +1,32 @@
 package com.pictet.adventurebookapi.controller;
 
 import com.pictet.adventurebookapi.model.Book;
+import com.pictet.adventurebookapi.model.BookSummary;
+import com.pictet.adventurebookapi.service.GetAllBooksService;
+import com.pictet.adventurebookapi.service.GetBookByIdService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/books")
+@AllArgsConstructor
 public class BookController {
 
+    private final GetAllBooksService getAllBooksService;
+    private final GetBookByIdService getBookByIdService;
+
     @GetMapping
-    public String getBooks() {
-        // TODO implement actual logic to fetch and return books
-        return  "List of books";
+    public List<BookSummary> getBooks() {
+        return getAllBooksService.getAllBooks();
     }
 
     @GetMapping("/{bookId}")
     public Book getBookById(@PathVariable final Integer bookId) {
-        // TODO implement actual logic to fetch and return a book by its ID
-        return null;
+        return getBookByIdService.getById(bookId);
     }
 }

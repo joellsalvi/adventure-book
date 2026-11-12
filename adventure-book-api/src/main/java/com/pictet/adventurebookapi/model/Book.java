@@ -1,13 +1,13 @@
 package com.pictet.adventurebookapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+import java.util.List;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Book {
-
-    private String title;
-}
+public record Book(
+        Integer id,
+        String title,
+        String author,
+        List<Section> sections
+) {}
