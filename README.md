@@ -28,8 +28,7 @@ Both frontends implement the same game and talk to the same API.
 3. You start at the book's beginning with **10 health points**.
 4. Read the section and click an option to move to the next section.
 5. Some options have a consequence that changes your health and shows what happened: losing or regaining health,
-   a permanent boost or poison on your maximum health, or instant death (see
-   [Consequence types](#consequence-types)).
+   a permanent boost or poison on your maximum health, or instant death.
 6. When your health reaches **0**, you die and the game is over: click **Start a new game**.
 7. When you reach an ending section, you win: click **Play again**.
 
@@ -120,7 +119,7 @@ Open http://localhost:3000.
 | React | `npm run build` in `adventure-book-front-react` | `adventure-book-front-react/build/` |
 
 The frontends are static files after the build. Serve them from any web server, and add that server's origin to
-the API's CORS config (see [Configuration](#configuration)).
+the API's CORS config).
 
 ## API reference
 
