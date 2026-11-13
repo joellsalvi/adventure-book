@@ -40,7 +40,7 @@ class GetAllBooksServiceTest {
     @Test
     void when_all_books_are_valid__then_all_summaries_are_returned_in_order() throws IOException {
         // GIVEN
-        stubBooks(validBook(1, "Book 1"), validBook(2, "Book 2"), validBook(3, "Book 3"));
+        stubBooks(validBook(1, "Book 1"), validBook(2, "Book 2"), validBook(3, "Book 3"), validBook(4, "Book 4"));
 
         // WHEN
         final List<BookSummary> summaries = getAllBooksService.getAllBooks();
@@ -49,7 +49,8 @@ class GetAllBooksServiceTest {
         assertEquals(List.of(
                 new BookSummary(1, "Book 1"),
                 new BookSummary(2, "Book 2"),
-                new BookSummary(3, "Book 3")), summaries);
+                new BookSummary(3, "Book 3"),
+                new BookSummary(4, "Book 4")), summaries);
     }
 
     @Test
@@ -58,7 +59,8 @@ class GetAllBooksServiceTest {
         stubBooks(
                 book(1, section(1, SectionTypeEnum.NODE, 2), endSection(2)),
                 book(2, beginSection(1, 2), section(2, SectionTypeEnum.NODE, 1)),
-                book(3, beginSection(1, 99), endSection(2)));
+                book(3, beginSection(1, 99), endSection(2)),
+                book(4, beginSection(1, 3), beginSection(2, 3), endSection(3)));
 
         // WHEN
         final List<BookSummary> summaries = getAllBooksService.getAllBooks();
@@ -73,13 +75,16 @@ class GetAllBooksServiceTest {
         final Book noBegin = book(2,
                 section(1, SectionTypeEnum.NODE, 2),
                 endSection(2));
-        stubBooks(validBook(1, "Book 1"), noBegin, validBook(3, "Book 3"));
+        stubBooks(validBook(1, "Book 1"), noBegin, validBook(3, "Book 3"), validBook(4, "Book 4"));
 
         // WHEN
         final List<BookSummary> summaries = getAllBooksService.getAllBooks();
 
         // THEN
-        assertEquals(List.of(new BookSummary(1, "Book 1"), new BookSummary(3, "Book 3")), summaries);
+        assertEquals(List.of(
+                new BookSummary(1, "Book 1"),
+                new BookSummary(3, "Book 3"),
+                new BookSummary(4, "Book 4")), summaries);
     }
 
     @Test
@@ -89,13 +94,16 @@ class GetAllBooksServiceTest {
                 beginSection(1, 3),
                 beginSection(2, 3),
                 endSection(3));
-        stubBooks(validBook(1, "Book 1"), twoBegins, validBook(3, "Book 3"));
+        stubBooks(validBook(1, "Book 1"), twoBegins, validBook(3, "Book 3"), validBook(4, "Book 4"));
 
         // WHEN
         final List<BookSummary> summaries = getAllBooksService.getAllBooks();
 
         // THEN
-        assertEquals(List.of(new BookSummary(1, "Book 1"), new BookSummary(3, "Book 3")), summaries);
+        assertEquals(List.of(
+                new BookSummary(1, "Book 1"),
+                new BookSummary(3, "Book 3"),
+                new BookSummary(4, "Book 4")), summaries);
     }
 
     @Test
@@ -104,13 +112,16 @@ class GetAllBooksServiceTest {
         final Book noEnd = book(2,
                 beginSection(1, 2),
                 section(2, SectionTypeEnum.NODE, 1));
-        stubBooks(validBook(1, "Book 1"), noEnd, validBook(3, "Book 3"));
+        stubBooks(validBook(1, "Book 1"), noEnd, validBook(3, "Book 3"), validBook(4, "Book 4"));
 
         // WHEN
         final List<BookSummary> summaries = getAllBooksService.getAllBooks();
 
         // THEN
-        assertEquals(List.of(new BookSummary(1, "Book 1"), new BookSummary(3, "Book 3")), summaries);
+        assertEquals(List.of(
+                new BookSummary(1, "Book 1"),
+                new BookSummary(3, "Book 3"),
+                new BookSummary(4, "Book 4")), summaries);
     }
 
     @Test
@@ -120,7 +131,7 @@ class GetAllBooksServiceTest {
                 beginSection(1, 2, 3),
                 endSection(2),
                 endSection(3));
-        stubBooks(validBook(1, "Book 1"), multipleEnds, validBook(3, "Book 3"));
+        stubBooks(validBook(1, "Book 1"), multipleEnds, validBook(3, "Book 3"), validBook(4, "Book 4"));
 
         // WHEN
         final List<BookSummary> summaries = getAllBooksService.getAllBooks();
@@ -129,7 +140,8 @@ class GetAllBooksServiceTest {
         assertEquals(List.of(
                 new BookSummary(1, "Book 1"),
                 new BookSummary(2, "Book 2"),
-                new BookSummary(3, "Book 3")), summaries);
+                new BookSummary(3, "Book 3"),
+                new BookSummary(4, "Book 4")), summaries);
     }
 
     @Test
@@ -139,13 +151,16 @@ class GetAllBooksServiceTest {
                 beginSection(1, 2),
                 section(2, SectionTypeEnum.NODE, 99),
                 endSection(3));
-        stubBooks(validBook(1, "Book 1"), invalidGoto, validBook(3, "Book 3"));
+        stubBooks(validBook(1, "Book 1"), invalidGoto, validBook(3, "Book 3"), validBook(4, "Book 4"));
 
         // WHEN
         final List<BookSummary> summaries = getAllBooksService.getAllBooks();
 
         // THEN
-        assertEquals(List.of(new BookSummary(1, "Book 1"), new BookSummary(3, "Book 3")), summaries);
+        assertEquals(List.of(
+                new BookSummary(1, "Book 1"),
+                new BookSummary(3, "Book 3"),
+                new BookSummary(4, "Book 4")), summaries);
     }
 
     @Test
@@ -155,13 +170,16 @@ class GetAllBooksServiceTest {
                 beginSection(1, 2, 3),
                 new Section(2, "text", SectionTypeEnum.NODE, null),
                 endSection(3));
-        stubBooks(validBook(1, "Book 1"), nodeWithoutOptions, validBook(3, "Book 3"));
+        stubBooks(validBook(1, "Book 1"), nodeWithoutOptions, validBook(3, "Book 3"), validBook(4, "Book 4"));
 
         // WHEN
         final List<BookSummary> summaries = getAllBooksService.getAllBooks();
 
         // THEN
-        assertEquals(List.of(new BookSummary(1, "Book 1"), new BookSummary(3, "Book 3")), summaries);
+        assertEquals(List.of(
+                new BookSummary(1, "Book 1"),
+                new BookSummary(3, "Book 3"),
+                new BookSummary(4, "Book 4")), summaries);
     }
 
     @Test
@@ -171,13 +189,16 @@ class GetAllBooksServiceTest {
                 beginSection(1, 2, 3),
                 new Section(2, "text", SectionTypeEnum.NODE, List.of()),
                 endSection(3));
-        stubBooks(validBook(1, "Book 1"), nodeWithEmptyOptions, validBook(3, "Book 3"));
+        stubBooks(validBook(1, "Book 1"), nodeWithEmptyOptions, validBook(3, "Book 3"), validBook(4, "Book 4"));
 
         // WHEN
         final List<BookSummary> summaries = getAllBooksService.getAllBooks();
 
         // THEN
-        assertEquals(List.of(new BookSummary(1, "Book 1"), new BookSummary(3, "Book 3")), summaries);
+        assertEquals(List.of(
+                new BookSummary(1, "Book 1"),
+                new BookSummary(3, "Book 3"),
+                new BookSummary(4, "Book 4")), summaries);
     }
 
     @Test

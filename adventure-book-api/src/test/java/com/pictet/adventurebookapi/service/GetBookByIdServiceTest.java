@@ -27,7 +27,7 @@ class GetBookByIdServiceTest {
 
     private static final AvailableBooks FIRST = AvailableBooks.values()[0];
     private static final AvailableBooks SECOND = AvailableBooks.values()[1];
-    private static final AvailableBooks LAST = AvailableBooks.values()[2];
+    private static final AvailableBooks LAST = AvailableBooks.values()[AvailableBooks.values().length - 1];
 
     @Mock
     private JsonParser jsonParser;
@@ -57,10 +57,10 @@ class GetBookByIdServiceTest {
     @Test
     void when_id_matches_last_book__then_it_is_returned() throws IOException {
         // GIVEN
-        final List<Book> books = stubAllBooks(1, 2, 3);
+        final List<Book> books = stubAllBooks(1, 2, 3, 4);
 
         // WHEN
-        final Book result = getBookByIdService.getById(3);
+        final Book result = getBookByIdService.getById(4);
 
         // THEN
         assertSame(books.get(books.size() - 1), result);
@@ -69,7 +69,7 @@ class GetBookByIdServiceTest {
     @Test
     void when_id_does_not_match_any_book__then_book_not_found_exception_is_thrown() throws IOException {
         // GIVEN
-        stubAllBooks(1, 2, 3);
+        stubAllBooks(1, 2, 3, 4);
 
         // WHEN
         final BookNotFoundException exception = assertThrows(BookNotFoundException.class,
@@ -82,7 +82,7 @@ class GetBookByIdServiceTest {
     @Test
     void when_id_is_null__then_book_not_found_exception_is_thrown() throws IOException {
         // GIVEN
-        stubAllBooks(1, 2, 3);
+        stubAllBooks(1, 2, 3, 4);
 
         // WHEN
         final BookNotFoundException exception = assertThrows(BookNotFoundException.class,
@@ -125,7 +125,7 @@ class GetBookByIdServiceTest {
     @Test
     void when_id_matches_middle_book__then_it_is_returned_and_remaining_books_are_not_parsed() throws IOException {
         // GIVEN
-        final List<Book> books = stubAllBooks(1, 2, 3);
+        final List<Book> books = stubAllBooks(1, 2, 3, 4);
 
         // WHEN
         final Book result = getBookByIdService.getById(2);

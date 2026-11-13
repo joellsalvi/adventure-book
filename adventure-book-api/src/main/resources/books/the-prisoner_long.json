@@ -1,0 +1,618 @@
+{
+  "title": "The Prisoner: The Long Night",
+  "id": 4,
+  "author": "Daniel El Fuego",
+  "sections": [
+    {
+      "id": 1,
+      "text": "You wake up in what seems to be a dark prison cell, on an old wooden bed. Metal bars are preventing you to escape from the room. There is no window. Somewhere above you, a bell tolls midnight.",
+      "type": "BEGIN",
+      "options": [
+        {
+          "description": "You try to open the door",
+          "gotoId": 500
+        },
+        {
+          "description": "You look under the bed",
+          "gotoId": 20
+        },
+        {
+          "description": "You run your hands along the walls",
+          "gotoId": 40
+        },
+        {
+          "description": "You shout for the guard",
+          "gotoId": 60
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "text": "You don't see anything, it's too dark.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Try to scan the area with your hands",
+          "gotoId": 30,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "2",
+            "text": "As you move your hands left and right under the bed, you cut yourself on a rusty nail."
+          }
+        },
+        {
+          "description": "Give up and get back on your feet",
+          "gotoId": 1
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "text": "Your fingers close on something cold and heavy: an old door key.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Try to open the door with the key",
+          "gotoId": 100
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "text": "One brick near the floor is loose. Behind it you find a stale crust of bread, a folded scrap of paper, and a cold draft of air.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Eat the bread, then read the paper",
+          "gotoId": 45,
+          "consequence": {
+            "type": "GAIN_HEALTH",
+            "value": "2",
+            "text": "It is as hard as stone, but your stomach stops aching."
+          }
+        },
+        {
+          "description": "Leave the bread, it smells strange, and read the paper",
+          "gotoId": 45
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "text": "The note reads, in a shaky hand: \"The captain at the gate asks for the word. The word is LANTERN. Never touch the idol.\" The draft comes from a narrow tunnel behind the brick.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Crawl into the tunnel",
+          "gotoId": 50,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "1",
+            "text": "The stones scrape your knees and elbows raw."
+          }
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "text": "The tunnel slopes down and ends at a crumbling wall. Through the cracks you hear dripping water, and something that sounds like a chant.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Kick the wall down",
+          "gotoId": 400,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "2",
+            "text": "The wall gives way, and so does your ankle."
+          }
+        },
+        {
+          "description": "Squeeze through the widest crack",
+          "gotoId": 400
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "text": "Heavy boots echo in the corridor. A one-eyed guard presses his face against the bars. \"Shut it, or I'll shut it for you.\"",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Insult his mother",
+          "gotoId": 1,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "3",
+            "text": "He reaches through the bars and slams your head against the metal."
+          }
+        },
+        {
+          "description": "Pretend you are dying of fever",
+          "gotoId": 65
+        },
+        {
+          "description": "Apologize and go back to bed",
+          "gotoId": 1
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "text": "The guard grumbles, unlocks the door and leans over you. His keys dangle from his belt.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Grab his keys and run",
+          "gotoId": 100,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "2",
+            "text": "He catches your arm and twists it before you break free and lock him in."
+          }
+        },
+        {
+          "description": "Keep playing dead",
+          "gotoId": 1,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "1",
+            "text": "He kicks you in the ribs, laughs, and locks the door again."
+          }
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "text": "You step into a long corridor lit by a dying torch. To the left, snoring comes from the guard room. To the right, a door is marked with a red cross. Straight ahead, a stairway spirals down into darkness.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Go to the guard room",
+          "gotoId": 200
+        },
+        {
+          "description": "Open the door with the red cross",
+          "gotoId": 300
+        },
+        {
+          "description": "Take the stairs down",
+          "gotoId": 400
+        }
+      ]
+    },
+    {
+      "id": 200,
+      "text": "A fat guard sleeps in a chair, his uniform jacket and helmet hanging on a hook. Another door leads to the kitchen.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Take the uniform and the helmet",
+          "gotoId": 230
+        },
+        {
+          "description": "Knock him out first, just in case",
+          "gotoId": 220,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "3",
+            "text": "He wakes up as you lift the stool. The fight is short, but painful."
+          }
+        },
+        {
+          "description": "Tiptoe past him to the kitchen",
+          "gotoId": 600
+        }
+      ]
+    },
+    {
+      "id": 220,
+      "text": "The guard lies unconscious on the floor. You are shaking, but you are alone.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Put on his uniform",
+          "gotoId": 230
+        },
+        {
+          "description": "Head to the kitchen",
+          "gotoId": 600
+        }
+      ]
+    },
+    {
+      "id": 230,
+      "text": "The uniform is two sizes too big, but with the helmet on, nobody will look at you twice. The main gate is across the courtyard.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Walk confidently to the main gate",
+          "gotoId": 800
+        },
+        {
+          "description": "Go through the kitchen instead",
+          "gotoId": 600
+        }
+      ]
+    },
+    {
+      "id": 300,
+      "text": "The infirmary smells of vinegar. Clean bandages lie on a table, next to two vials: one glowing blue, one deep red. Footsteps are coming down the corridor.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Bandage your wounds",
+          "gotoId": 310,
+          "consequence": {
+            "type": "GAIN_HEALTH",
+            "value": "3",
+            "text": "The bandages are clean and tight. You feel much better."
+          }
+        },
+        {
+          "description": "Drink the blue vial",
+          "gotoId": 310,
+          "consequence": {
+            "type": "GAIN_MAX_HEALTH",
+            "value": "2",
+            "text": "A cold fire runs through your veins. You feel stronger than ever."
+          }
+        },
+        {
+          "description": "Drink the red vial",
+          "gotoId": 310,
+          "consequence": {
+            "type": "POISON",
+            "value": "2",
+            "text": "It burns all the way down. Something inside you will never be the same."
+          }
+        },
+        {
+          "description": "Touch nothing and hide",
+          "gotoId": 310
+        }
+      ]
+    },
+    {
+      "id": 310,
+      "text": "The footsteps stop in front of the door. You slip out through the back window onto a narrow ledge.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Climb up to the roof",
+          "gotoId": 900
+        },
+        {
+          "description": "Drop down into the kitchen yard",
+          "gotoId": 600,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "2",
+            "text": "You land badly on the cobblestones."
+          }
+        }
+      ]
+    },
+    {
+      "id": 400,
+      "text": "You reach a damp cellar. In the middle stands a stone idol covered in green moss, with two rubies for eyes. In a corner there is a trapdoor, and against the wall, a rusty sewer grate.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Pry the rubies out of the idol",
+          "gotoId": 410,
+          "consequence": {
+            "type": "POISON",
+            "value": "3",
+            "text": "Hidden needles bite into your fingers. The idol's venom seeps into your blood."
+          }
+        },
+        {
+          "description": "Open the trapdoor and jump",
+          "gotoId": 450,
+          "consequence": {
+            "type": "INSTANT_DEATH",
+            "value": "0",
+            "text": "There is no bottom you can survive. The fall is very, very long."
+          }
+        },
+        {
+          "description": "Lift the sewer grate",
+          "gotoId": 450
+        }
+      ]
+    },
+    {
+      "id": 410,
+      "text": "Your hand is numb and swollen, and the rubies did not even move. Behind the idol, the wall is wet: the sewers are close.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Lift the sewer grate",
+          "gotoId": 450
+        }
+      ]
+    },
+    {
+      "id": 450,
+      "text": "You drop into the sewers. Black water flows towards a faint light at the end of the tunnel. Something big moves in the dark.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Swim with the current",
+          "gotoId": 460,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "2",
+            "text": "The water is freezing, and full of things you would rather not name."
+          }
+        },
+        {
+          "description": "Walk along the narrow ledge",
+          "gotoId": 470
+        }
+      ]
+    },
+    {
+      "id": 460,
+      "text": "The current carries you to an iron grid. Beyond it, moonlight shines on a river. The grid is rusted through at the bottom.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Dive under the grid",
+          "gotoId": 1100,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "2",
+            "text": "The rusted bars tear at your back as you squeeze under them."
+          }
+        }
+      ]
+    },
+    {
+      "id": 470,
+      "text": "Halfway along the ledge, a pack of rats the size of cats blocks the way.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Fight your way through",
+          "gotoId": 460,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "4",
+            "text": "Teeth everywhere. You make it through, bleeding, and slip into the water."
+          }
+        },
+        {
+          "description": "Throw yourself into the water",
+          "gotoId": 460
+        },
+        {
+          "description": "Go back up to the cellar",
+          "gotoId": 400
+        }
+      ]
+    },
+    {
+      "id": 500,
+      "text": "The door is locked.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Gather your thoughts",
+          "gotoId": 1,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "1",
+            "text": "You're getting a little crazier..."
+          }
+        },
+        {
+          "description": "Rattle the bars and yell",
+          "gotoId": 60
+        }
+      ]
+    },
+    {
+      "id": 600,
+      "text": "The kitchen is warm. A pot of stew simmers over the fire, and the cook snores on a sack of flour. A laundry chute opens in the wall, and a back door leads to the courtyard.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Eat the stew",
+          "gotoId": 610,
+          "consequence": {
+            "type": "GAIN_HEALTH",
+            "value": "10",
+            "text": "Hot meat, onions and bread. For a moment, you forget all your wounds."
+          }
+        },
+        {
+          "description": "Slide down the laundry chute",
+          "gotoId": 650
+        },
+        {
+          "description": "Sneak out through the back door",
+          "gotoId": 700
+        }
+      ]
+    },
+    {
+      "id": 610,
+      "text": "The cook wakes up, sees you with the ladle in your hand, and grabs a cleaver.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Fight the cook",
+          "gotoId": 700,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "4",
+            "text": "The cleaver catches your shoulder before you knock him down with the pot, and run outside."
+          }
+        },
+        {
+          "description": "Dive into the laundry chute",
+          "gotoId": 650
+        }
+      ]
+    },
+    {
+      "id": 650,
+      "text": "You slide down the chute and land in a pile of dirty sheets. A cart full of linen is waiting to leave the castle.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Hide in the linen cart",
+          "gotoId": 1000
+        },
+        {
+          "description": "Walk out to the courtyard",
+          "gotoId": 700
+        }
+      ]
+    },
+    {
+      "id": 700,
+      "text": "The courtyard is bathed in moonlight. Guards patrol the walls. A hay cart stands near the gate while its driver drinks at the well. Ivy covers the wall up to the rooftops.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Hide in the hay cart",
+          "gotoId": 1000
+        },
+        {
+          "description": "Climb the ivy",
+          "gotoId": 900,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "2",
+            "text": "The ivy tears off halfway up, and you scrape your hands catching yourself."
+          }
+        },
+        {
+          "description": "Steal the driver's horse and charge the gate",
+          "gotoId": 1000,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "5",
+            "text": "Arrows whistle past you. One of them finds your leg."
+          }
+        }
+      ]
+    },
+    {
+      "id": 800,
+      "text": "At the main gate, a scarred captain looks you up and down. \"Night shift is over already? Give me the word, soldier.\"",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "\"Lantern.\"",
+          "gotoId": 1200
+        },
+        {
+          "description": "\"Midnight.\"",
+          "gotoId": 1200,
+          "consequence": {
+            "type": "INSTANT_DEATH",
+            "value": "0",
+            "text": "\"Wrong answer.\" The captain's sword is faster than you."
+          }
+        },
+        {
+          "description": "\"I forgot it, I'm new here.\"",
+          "gotoId": 810
+        }
+      ]
+    },
+    {
+      "id": 810,
+      "text": "The captain narrows his eye and calls two guards. \"Take this one back to the cells.\"",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Fight your way out",
+          "gotoId": 700,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "5",
+            "text": "Fists, boots, a sword pommel. You break free and run into the courtyard."
+          }
+        },
+        {
+          "description": "Surrender",
+          "gotoId": 1,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "2",
+            "text": "They take the uniform, beat you, and throw you back in your cell."
+          }
+        }
+      ]
+    },
+    {
+      "id": 900,
+      "text": "You are on the rooftops. The moat glitters far below. Beyond the outer wall, the branches of an old oak reach towards you.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Jump to the oak tree",
+          "gotoId": 1000,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "4",
+            "text": "You catch a branch, then another one, then the ground. Hard."
+          }
+        },
+        {
+          "description": "Dive into the moat",
+          "gotoId": 1100,
+          "consequence": {
+            "type": "INSTANT_DEATH",
+            "value": "0",
+            "text": "The moat is only knee-deep."
+          }
+        },
+        {
+          "description": "Walk along the ridge to the gatehouse",
+          "gotoId": 910
+        }
+      ]
+    },
+    {
+      "id": 910,
+      "text": "From the gatehouse roof you can see the guards below. A rope hangs down the outer wall, and a hay cart is about to leave through the gate.",
+      "type": "NODE",
+      "options": [
+        {
+          "description": "Climb down the rope",
+          "gotoId": 1000
+        },
+        {
+          "description": "Jump onto the hay cart",
+          "gotoId": 1000,
+          "consequence": {
+            "type": "LOSE_HEALTH",
+            "value": "3",
+            "text": "The hay is thinner than it looked."
+          }
+        }
+      ]
+    },
+    {
+      "id": 1000,
+      "text": "The castle walls grow smaller behind you as the sun rises over the forest. Nobody is coming after you. You are now free...",
+      "type": "END"
+    },
+    {
+      "id": 1100,
+      "text": "You crawl out of the river onto a muddy bank, far downstream from the castle. Soaked, bleeding, but alive. You are now free...",
+      "type": "END"
+    },
+    {
+      "id": 1200,
+      "text": "The captain salutes and waves you through. You walk out of the castle like any guard going home after a long shift, and you never look back. You are now free...",
+      "type": "END"
+    }
+  ]
+}

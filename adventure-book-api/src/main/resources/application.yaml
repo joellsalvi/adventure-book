@@ -2,3 +2,11 @@ server:
   servlet:
     context-path: /api
   port: 8080
+
+cors:
+  allowed-origins:
+    - http://localhost:4200 # Angular dev server
+    - http://localhost:3000 # React dev server
+  allowed-methods:
+    - GET
+  max-age: 3600
