@@ -16,6 +16,10 @@ public class GetBookByIdService {
 
     public Book getById(Integer id) {
 
+        if (Objects.isNull(id)) {
+            throw new BookNotFoundException("Book not found! ID: " + id);
+        }
+
         Book bookFound = BooksSingleton.getInstance()
                 .getBooks()
                 .get(id);
