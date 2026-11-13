@@ -1,7 +1,6 @@
 package com.pictet.adventurebookapi.parser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pictet.adventurebookapi.util.AvailableBooks;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
@@ -18,11 +17,11 @@ public class JsonParser {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public <T> T parseJson(final AvailableBooks availableBook, Class<T> type) throws IOException {
+    public <T> T parseJson(final String fileName, Class<T> type) throws IOException {
 
-        final ClassPathResource resource = new ClassPathResource(BOOKS_ROOT_PATH + availableBook.getFileName());
+        final ClassPathResource resource = new ClassPathResource(BOOKS_ROOT_PATH + fileName);
         if (!resource.exists()) {
-            throw new FileNotFoundException("Book file not found on classpath: " + BOOKS_ROOT_PATH + availableBook.getFileName());
+            throw new FileNotFoundException("Book file not found on classpath: " + BOOKS_ROOT_PATH + fileName);
         }
         try (InputStream inputStream = resource.getInputStream()) {
             return objectMapper.readValue(inputStream, type);

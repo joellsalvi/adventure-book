@@ -30,7 +30,7 @@ class JsonParserTest {
     @Test
     void when_deserialize_the_prisoner__then_title_is_mapped() throws IOException {
         // GIVEN
-        final var availableBook = AvailableBooks.BOOk_THE_PRISONER;
+        final var availableBook = AvailableBooks.BOOk_THE_PRISONER.getFileName();
 
         // WHEN
         final Book book = jsonParser.parseJson(availableBook, Book.class);
@@ -46,7 +46,7 @@ class JsonParserTest {
     @Test
     void when_deserialize_the_prisoner_all_errors__then_title_is_mapped() throws IOException {
         // GIVEN
-        final var availableBook = AvailableBooks.BOOk_THE_PRISONER_ALL_ERRORS;
+        final var availableBook = AvailableBooks.BOOk_THE_PRISONER_ALL_ERRORS.getFileName();
 
         // WHEN
         final Book book = jsonParser.parseJson(availableBook, Book.class);
@@ -62,7 +62,7 @@ class JsonParserTest {
     @Test
     void when_deserialize_the_prisoner_bad_id__then_title_is_mapped() throws IOException {
         // GIVEN
-        final var availableBook = AvailableBooks.BOOk_THE_PRISONER_BAD_ID;
+        final var availableBook = AvailableBooks.BOOk_THE_PRISONER_BAD_ID.getFileName();
 
         // WHEN
         final Book book = jsonParser.parseJson(availableBook, Book.class);
@@ -78,7 +78,7 @@ class JsonParserTest {
     @Test
     void when_deserialize_book_summary__then_title_is_mapped() throws IOException {
         // GIVEN
-        final var availableBook = AvailableBooks.BOOk_THE_PRISONER;
+        final var availableBook = AvailableBooks.BOOk_THE_PRISONER.getFileName();
 
         // WHEN
         final BookSummary bookSummary = jsonParser.parseJson(availableBook, BookSummary.class);
@@ -92,7 +92,7 @@ class JsonParserTest {
     @Test
     void when_deserialize_the_prisoner_long__then_every_consequence_type_is_mapped() throws IOException {
         // GIVEN
-        final var availableBook = AvailableBooks.BOOK_THE_PRISONER_LONG;
+        final var availableBook = AvailableBooks.BOOK_THE_PRISONER_LONG.getFileName();
 
         // WHEN
         final Book book = jsonParser.parseJson(availableBook, Book.class);
