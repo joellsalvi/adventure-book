@@ -1,0 +1,6 @@
+<div class="consequence" [class.consequence--positive]="positive()" role="status">
+  @if (healthChange(); as change) {
+    <span class="consequence__change">{{ change }} &#9829;</span>
+  }
+  <span>{{ event().consequence.text }}</span>
+</div>

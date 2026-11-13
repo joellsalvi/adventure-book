@@ -1,0 +1,15 @@
+<p class="section-text">{{ section().text }}</p>
+
+<div class="options">
+  @for (option of section().options ?? []; track $index; let first = $first) {
+    @if (first) {
+      <button mat-flat-button type="button" class="option" (click)="optionChosen.emit(option)">
+        {{ option.description }}
+      </button>
+    } @else {
+      <button mat-stroked-button type="button" class="option" (click)="optionChosen.emit(option)">
+        {{ option.description }}
+      </button>
+    }
+  }
+</div>

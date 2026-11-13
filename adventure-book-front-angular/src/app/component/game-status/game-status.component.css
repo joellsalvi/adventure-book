@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.status {
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.status h3 {
+  margin: 0 0 4px;
+  font-size: 1.4rem;
+}
+
+.status p {
+  margin: 0;
+  color: var(--ab-muted);
+}
+
+.status--dead {
+  border: 1px solid var(--ab-danger);
+  background: rgba(239, 83, 80, 0.12);
+}
+
+.status--dead h3 {
+  color: var(--ab-danger);
+}
+
+.status--won {
+  border: 1px solid var(--ab-success);
+  background: rgba(102, 187, 106, 0.12);
+}
+
+.status--won h3 {
+  color: var(--ab-success);
+}

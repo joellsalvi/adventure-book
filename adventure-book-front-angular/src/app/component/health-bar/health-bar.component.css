@@ -1,0 +1,35 @@
+.health {
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  --fill: var(--ab-success);
+}
+
+.health[data-level='medium'] {
+  --fill: var(--ab-warning);
+}
+
+.health[data-level='low'] {
+  --fill: var(--ab-danger);
+}
+
+.health__label {
+  font-weight: 500;
+  text-align: right;
+  color: var(--fill);
+}
+
+.health__track {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--ab-surface);
+  overflow: hidden;
+}
+
+.health__fill {
+  height: 100%;
+  border-radius: 5px;
+  background: var(--fill);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}

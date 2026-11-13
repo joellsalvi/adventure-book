@@ -1,0 +1,13 @@
+<div
+  class="health"
+  role="meter"
+  aria-label="Health points"
+  aria-valuemin="0"
+  [attr.aria-valuemax]="maxHealth()"
+  [attr.aria-valuenow]="health()"
+  [attr.data-level]="level()">
+  <span class="health__label"><span aria-hidden="true">&#9829;</span> {{ health() }} / {{ maxHealth() }}</span>
+  <div class="health__track">
+    <div class="health__fill" [style.width.%]="percent()"></div>
+  </div>
+</div>

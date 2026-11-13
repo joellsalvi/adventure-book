@@ -1,0 +1,14 @@
+@if (status() === 'DEAD') {
+  <div class="status status--dead" role="alert">
+    <h3>You died</h3>
+    <p>Your health dropped to zero. The adventure is over.</p>
+  </div>
+  <button mat-flat-button type="button" (click)="restart.emit()">Start a new game</button>
+} @else {
+  <p class="section-text">{{ section().text }}</p>
+  <div class="status status--won" role="status">
+    <h3>The End</h3>
+    <p>You reached an ending of this adventure.</p>
+  </div>
+  <button mat-flat-button type="button" (click)="restart.emit()">Play again</button>
+}

@@ -1,0 +1,192 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+
+.card {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  box-sizing: border-box;
+  background: var(--ab-card);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.card__header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.game-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.book-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.book-author {
+  color: var(--ab-muted);
+  font-size: 0.9rem;
+}
+
+.hint {
+  margin: 8px 0;
+  text-align: center;
+  color: var(--ab-muted);
+}
+
+.section-text {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Health bar */
+.health {
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  --fill: var(--ab-success);
+}
+
+.health[data-level='medium'] {
+  --fill: var(--ab-warning);
+}
+
+.health[data-level='low'] {
+  --fill: var(--ab-danger);
+}
+
+.health__label {
+  font-weight: 500;
+  text-align: right;
+  color: var(--fill);
+}
+
+.health__track {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--ab-surface);
+  overflow: hidden;
+}
+
+.health__fill {
+  height: 100%;
+  border-radius: 5px;
+  background: var(--fill);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* Consequence message */
+.consequence {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 16px;
+  border-left: 4px solid var(--ab-danger);
+  border-radius: 6px;
+  background: rgba(239, 83, 80, 0.1);
+  font-style: italic;
+}
+
+.consequence__change {
+  flex-shrink: 0;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ab-danger);
+}
+
+.consequence--positive {
+  border-left-color: var(--ab-success);
+  background: rgba(102, 187, 106, 0.1);
+}
+
+.consequence--positive .consequence__change {
+  color: var(--ab-success);
+}
+
+/* Section and options */
+.section-view,
+.game-status {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option {
+  width: 100%;
+  min-height: 44px;
+  height: auto;
+  padding-block: 8px;
+  border-radius: 6px;
+}
+
+.option .ms-Button-label {
+  white-space: normal;
+}
+
+/* End of game */
+.status {
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.status h3 {
+  margin: 0 0 4px;
+  font-size: 1.4rem;
+}
+
+.status p {
+  margin: 0;
+  color: var(--ab-muted);
+}
+
+.status--dead {
+  border: 1px solid var(--ab-danger);
+  background: rgba(239, 83, 80, 0.12);
+}
+
+.status--dead h3 {
+  color: var(--ab-danger);
+}
+
+.status--won {
+  border: 1px solid var(--ab-success);
+  background: rgba(102, 187, 106, 0.12);
+}
+
+.status--won h3 {
+  color: var(--ab-success);
+}

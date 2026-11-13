@@ -1,1 +1,46 @@
-Hello World!
+<main class="page">
+  <section class="card" aria-labelledby="app-title">
+    <header class="card__header">
+      <h1 id="app-title">{{ title }}</h1>
+      @if (game.state()?.status === 'PLAYING') {
+        <button mat-button type="button" (click)="game.restart()">Restart</button>
+      }
+    </header>
+
+    <app-book-selector
+      [books]="game.books()"
+      [selectedId]="game.selectedBookId()"
+      [disabled]="game.booksLoading()"
+      (bookSelected)="game.selectBook($event)" />
+
+    @if (game.error(); as error) {
+      <p class="error" role="alert">{{ error }}</p>
+    }
+
+    @if (game.booksLoading() || game.bookLoading()) {
+      <mat-progress-bar mode="indeterminate" aria-label="Loading" />
+    } @else {
+      @if (game.state(); as state) {
+        <div class="game-header">
+          <div>
+            <h2 class="book-title">{{ state.book.title }}</h2>
+            <span class="book-author">by {{ state.book.author }}</span>
+          </div>
+          <app-health-bar [health]="state.player.health" [maxHealth]="state.player.maxHealth" />
+        </div>
+
+        @if (state.lastEvent; as event) {
+          <app-consequence-message [event]="event" />
+        }
+
+        @if (state.status === 'PLAYING') {
+          <app-section-view [section]="state.section" (optionChosen)="game.choose($event)" />
+        } @else {
+          <app-game-status [status]="state.status" [section]="state.section" (restart)="game.restart()" />
+        }
+      } @else if (!game.error()) {
+        <p class="hint">Please select a book to start your adventure.</p>
+      }
+    }
+  </section>
+</main>

@@ -1,0 +1,11 @@
+<mat-form-field appearance="outline" subscriptSizing="dynamic" class="selector">
+  <mat-label>Select an Adventure Book</mat-label>
+  <mat-select
+    [value]="selectedId()"
+    [disabled]="disabled() || books().length === 0"
+    (selectionChange)="bookSelected.emit($event.value)">
+    @for (book of books(); track book.id) {
+      <mat-option [value]="book.id">{{ book.title }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
